@@ -1,1 +1,24 @@
-<p>search-hero works!</p>
+<div fxLayout="column">
+  <div>
+    <h1>Buscador de heroes</h1>
+  </div>
+  <div fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del heroe</mat-label>
+      <input matInput type="search" [(ngModel)]="txt" [matAutocomplete]="auto" (input)="searching()">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optSelected($event)">
+        <mat-option *ngIf="heros.length === 0 && txt.trim().length; else resultsSearch" value="">
+          No existen resultados con el termino: {{ txt }}
+        </mat-option>
+        <ng-template #resultsSearch>
+          <mat-option *ngFor="let hero of heros" [value]="hero">
+            {{hero.superhero}}
+          </mat-option>
+        </ng-template>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div *ngIf="heroSelected">
+    <app-card-hero [hero]="heroSelected"></app-card-hero>
+  </div>
+</div>

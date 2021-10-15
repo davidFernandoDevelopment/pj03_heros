@@ -1,21 +1,39 @@
-<h1>Heroes App</h1>
-<hr>
-<ul>
-  <li>
-    <a routerLink="/hero/list">List Heros</a>
-  </li>
-  <li>
-    <a routerLink="/hero/add">Add Hero</a>
-  </li>
-  <li>
-    <a routerLink="/hero/edit/12">Edit hero</a>
-  </li>
-  <li>
-    <a routerLink="/hero/search">Search</a>
-  </li>
-  <li>
-    <a routerLink="/hero/12">Hero 12</a>
-  </li>
-</ul>
-<hr>
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen hasBackdrop="false">
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="./list" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>label</mat-icon>
+        <span>Listado de heroes</span>
+      </a>
+      <a mat-list-item routerLink="./add" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>add</mat-icon>
+        <span>Agregar heroes</span>
+      </a>
+      <a mat-list-item routerLink="./search" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span>buscar heroe</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <button mat-button>
+        Logout
+      </button>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
