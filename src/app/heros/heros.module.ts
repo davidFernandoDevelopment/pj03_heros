@@ -13,6 +13,7 @@ import { HeroRoutingModule } from './hero-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { CardHeroComponent } from './components/card-hero/card-hero.component';
 import { ImagePipe } from './pipes/image.pipe';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ImagePipe } from './pipes/image.pipe';
     HomeComponent,
     ListHeroComponent,
     CardHeroComponent,
-    ImagePipe
+    ImagePipe,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,

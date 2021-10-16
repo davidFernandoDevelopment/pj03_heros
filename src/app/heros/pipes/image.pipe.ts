@@ -9,12 +9,13 @@ export class ImagePipe implements PipeTransform {
   transform(hero: IHero): string {
     let newImage;
 
-    if (hero.id) {
-      newImage = `assets/heroes/${hero.id}.jpg`;
+    if (!hero.id && !hero.alt_img) {
+      newImage = 'assets/no-image.png';
+    } else if (hero.alt_img) {
+      newImage = hero.alt_img;
     } else {
-      newImage = 'assest/heroes/no-image.png';
+      newImage = `assets/heroes/${hero.id}.jpg`;
     }
     return newImage;
   }
-
 }
